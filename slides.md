@@ -1,15 +1,17 @@
 ---
 marp: true
-theme: gaia
 paginate: true
+theme: magland-theme
 ---
+
+<!-- For using custom theme, see https://github.com/orgs/marp-team/discussions/115 -->
 
 # Collaborative scientific visualization in the browser with Figurl
 
 Jeremy Magland and Jeff Soules, Center for Computational Mathematics, Flatiron Institute
 
-* Frank lab: Loren Frank, Eric denovellis, Kyu Hyun Lee, Alison Comrie, Michael Coulter
-* Alessio Buccino, CatalystNeuro, Allen Institute for Neural Dynamics
+- Frank lab: Loren Frank, Eric denovellis, Kyu Hyun Lee, Alison Comrie, Michael Coulter
+- Alessio Buccino, CatalystNeuro, Allen Institute for Neural Dynamics
 
 ---
 
@@ -17,10 +19,12 @@ Jeremy Magland and Jeff Soules, Center for Computational Mathematics, Flatiron I
 
 Visualization is critical at every stage of the data-centric scientific process
 
-* Data exploration
-* Data cleaning and quality control
-* Analysis and interpretation
-* Communication of results to the scientific community
+- Data exploration
+- Data cleaning and quality control
+- Analysis and interpretation
+- Communication of results to the scientific community
+
+![bg right:10% 50%](https://user-images.githubusercontent.com/3679296/269425776-52d0eec8-35b4-40be-b5f1-44937265ba77.png)
 
 ---
 
