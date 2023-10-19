@@ -93,8 +93,9 @@ These are powerful tools, but they typically need to be embedded in a framework 
 
 - Jupyter, Google Colab, etc.
 - **Pros**: reproducible, self-documenting, interactive
-- Shareable on github, but only for static rendering of output cells (there exist systems for rendering interactive outputs, but they have limitations)
-- **Cons**: Requires a running backend, Limited ability to share interactive visualizations, Cluttered by code, etc.
+- Shareable on github, but only for static rendering of output cells
+- There are other systems for rendering interactive outputs, but they have limitations
+- **Cons**: Requires a running backend, Cluttered by code, etc.
 
 ---
 
@@ -195,7 +196,7 @@ Example: https://observablehq.com/@redblobgames/centroid-and-voronoi-polygons
 ![bg right:50% 90%](https://user-images.githubusercontent.com/3679296/275907049-47a1fb7b-acad-49c7-a084-1aab86473c7d.png)
 
 - This is a specialized tool
-- Requires data be prepared and uploaded to a cloud bucket (requires expertise and special configuration)
+- Requires data be prepared and uploaded to a cloud bucket (expertise and special configuration)
 
 
 ---
@@ -320,6 +321,12 @@ https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://e6ca2d115aa3b92b
 
 ---
 
+## Anatomy of a Figurl URL
+
+<img src="https://user-images.githubusercontent.com/3679296/276540186-a06a7043-1130-4f84-bdea-3b4bfcfb28be.png" />
+
+---
+
 ## Figurl Altair Example
 
 ```python
@@ -367,50 +374,9 @@ https://figurl.org/f?v=gs://figurl/volumeview-4&d=sha1://5a9cc08b0d8ce7a71c132b4
 
 ---
 
-## Embedded 3D surface
+## 3D surface
 
 <iframe src="https://figurl.org/f?v=gs://figurl/volumeview-4&d=sha1://5a9cc08b0d8ce7a71c132b41bb5f88b9247568ba&label=rbc_surface_scalar_fields&hide=1" width="1100px" height="500px"></iframe>
-
----
-
-## Anatomy of a Figurl URL
-
-<img src="https://user-images.githubusercontent.com/3679296/276540186-a06a7043-1130-4f84-bdea-3b4bfcfb28be.png" />
-
----
-
-## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
-
-<image src="https://user-images.githubusercontent.com/3679296/271276312-886a4aec-f972-4d9c-a821-19a2ae3d0de2.png" width="95%" />
-
-
----
-
-## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
-
-<image src="https://user-images.githubusercontent.com/3679296/271276944-449ddb6a-d640-48b2-9ee3-655ecb82e2fd.png" width="95%" />
-
----
-
-## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
-
-<image src="https://user-images.githubusercontent.com/3679296/271277359-9622d633-c375-467c-9549-3a69ca1616d9.png" width="95%" />
-
----
-
-## Lab-specific visualization plugins
-
-<center>
-<img src="https://user-images.githubusercontent.com/3679296/276545564-84b529e7-5125-4169-8612-a662b63bbfb1.png" width="1000px" />
-</center>
-
----
-
-## Lab-specific visualization plugins
-
-<center>
-<img src="https://user-images.githubusercontent.com/3679296/276546096-1ccda771-0a5e-47c3-93bd-df29dc86744f.png" width="1000px" />
-</center>
 
 ---
 
@@ -460,6 +426,65 @@ y = kcl.load_npy("sha1://bb55205a2482c6db2ace544fc7d8397551110701?label=example.
 
 z = kcl.load_pkl("sha1://20d178d5a1264fc3267e38ca238c23f3e2dcd5d2?label=example.pkl")
 ```
+
+---
+
+## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
+
+<image src="https://user-images.githubusercontent.com/3679296/271276312-886a4aec-f972-4d9c-a821-19a2ae3d0de2.png" width="95%" />
+
+
+---
+
+## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
+
+<image src="https://user-images.githubusercontent.com/3679296/271276944-449ddb6a-d640-48b2-9ee3-655ecb82e2fd.png" width="95%" />
+
+---
+
+## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
+
+<image src="https://user-images.githubusercontent.com/3679296/271277359-9622d633-c375-467c-9549-3a69ca1616d9.png" width="95%" />
+
+---
+
+## Lab-specific visualization plugins (Loren Frank Lab)
+
+<center>
+<img src="https://user-images.githubusercontent.com/3679296/276545564-84b529e7-5125-4169-8612-a662b63bbfb1.png" width="1000px" />
+</center>
+
+---
+
+## Lab-specific visualization plugins (with Ralph Peterson)
+
+<center>
+<img src="https://user-images.githubusercontent.com/3679296/276546096-1ccda771-0a5e-47c3-93bd-df29dc86744f.png" width="1000px" />
+</center>
+
+---
+
+## Live example ([link](https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://ac58ec4039b5ac24054260be7c8caa7d909bb0cb&label=alison%27s%20example)) (Loren Frank Lab)
+
+<iframe src="https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://ac58ec4039b5ac24054260be7c8caa7d909bb0cb&label=alison%27s%20example&hide=1" width="1100px" height="500px"></iframe>
+
+---
+
+## Live example ([link](https://figurl.org/f?v=https://scratchrealm.github.io/skeleton-pose-annotator/v1&d=sha1://272f16546785718bf2fa1d43f21019b5b24f5cad&s={%22annotation%22:%22gh://scratchrealm/example-annotations/main/spa/example1.json%22}&label=example%20labeling%20stack)) (SLEAP-type interface)
+
+<iframe src="https://figurl.org/f?v=https://scratchrealm.github.io/skeleton-pose-annotator/v1&d=sha1://272f16546785718bf2fa1d43f21019b5b24f5cad&s={%22annotation%22:%22gh://scratchrealm/example-annotations/main/spa/example1.json%22}&label=example%20labeling%20stack&hide=1" width="1100px" height="500px"></iframe>
+
+---
+
+## Live example ([link](https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://43eb8efe806c5341225d789b8f447a88cde56d15&label=2d%20decode%20composite&zone=franklab.default)) (Loren Frank Lab)
+
+<iframe src="https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://43eb8efe806c5341225d789b8f447a88cde56d15&label=2d%20decode%20composite&zone=franklab.default&hide=1" width="1100px" height="500px"></iframe>
+
+---
+
+## Live example ([link](https://figurl.org/f?v=gs://figurl/figneuro-1&d=sha1://73ba63a0ab552f9d124bc5b6a09254c822576fa0&label=audio/video/spikes%20composite%20view)) (with Ralph Peterson)
+
+<iframe src="https://figurl.org/f?v=gs://figurl/figneuro-1&d=sha1://73ba63a0ab552f9d124bc5b6a09254c822576fa0&label=audio/video/spikes%20composite%20view&hide=1" width="1100px" height="500px"></iframe>
 
 ---
 
