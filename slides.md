@@ -15,36 +15,37 @@ Jeremy Magland, Center for Computational Mathematics, Flatiron Institute
 
 - Flatiron: Jeff Soules
 - Frank lab: Loren Frank, Eric denovellis, Kyu Hyun Lee, Alison Comrie, Michael Coulter
-- Other: Alessio Buccino
+- Allen Institute: Alessio Buccino
 
 ---
 
-## Role of visualization in the scientific process
+## Visualization in the scientific process
 
 ![bg right:20% 40%](https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg)
 
 Visualization is critical at every stage of the data-centric scientific process
 
 - Data exploration
-- Data cleaning and quality control
+- Quality control
+- Curation
 - Analysis and interpretation
-- Communication of results to scientific community
+- Communication
 
 ---
 
 ## Benefits of interactive visualizations
+
+![bg right:45% 100%](https://user-images.githubusercontent.com/3679296/276534849-9c3fbc26-b3a9-4b9a-a423-05a277bad208.png)
 
 ![bg right:40% 80%](https://user-images.githubusercontent.com/3679296/275474172-b9a86083-9815-4bd5-a735-11b17142e9f0.png)
 
 Compared with static plots, interactive visualizations enable:
 
 - Exploration of large, complex datasets
-- Interactive exploration of parameter space
-- Gain intuition about the data
-- Rapid identification of outliers and artifacts
-- Interactive hypothesis testing
-    - e.g., "What if I remove this outlier?"
-- Interactive curation of datasets
+- Exploration of parameter space
+- Gain intuition about dataset
+- Identification of outliers and artifacts (QC)
+- Interactive / collaborative curation
 
 ---
 
@@ -54,7 +55,7 @@ Compared with static plots, interactive visualizations enable:
 
 Interactive visualizations are not easily shared as they often require:
 
-- Specialized operating system / hardware
+- Specific operating system / hardware
 - Specialized software
 - Transfer of large datasets
 - Expertise in setting up / reproducing the visualization
@@ -65,13 +66,13 @@ Interactive visualizations are not easily shared as they often require:
 
 ![bg right:30% 80%](https://live.staticflickr.com/8364/8270409318_bdd1115652_w.jpg)
 
-- **Easy to use:** no installation
-- **Easy to share:** copy-paste the link
-- **Cross-platform:** all desktop options and mobile
-- **Development cycle advantages:** simplifies distribution, etc.
-- **Integrates naturally with cloud resources**
-- **Collaboration**
-- **Reproducibility**
+- Easy to use
+- Easy to share
+- Cross-platform
+- Development cycle advantages:** simplifies distribution, etc.
+- Integrates naturally with cloud resources
+- Collaboration
+- Reproducibility
 * **Limitations:** no native access to local files/software, requires internet connection, limited access to previous versions, requires coding in JavaScript
 
 ---
@@ -82,7 +83,7 @@ Interactive visualizations are not easily shared as they often require:
 
 ###  ... and many more
 
-These are powerful tools, but they don't offer frictionless sharing of interactive visualizations out of the box.
+These are powerful tools, but they typically need to be embedded in a framework to be usable and shareable.
 
 ---
 
@@ -91,13 +92,13 @@ These are powerful tools, but they don't offer frictionless sharing of interacti
 ![bg right:50% 90%](https://github.com/magland/magland-fwam-2023/assets/3679296/e83cfb54-12a5-49e9-a92f-ec1a1e8dd5a8)
 
 - Jupyter, Google Colab, etc.
-- Pros: reproducible, self-documenting, interactive
-- shareable, but only for static rendered notebooks
-- Cons: Requires a running backend, Limited ability to share interactive visualizations, Cluttered by code, etc.
+- **Pros**: reproducible, self-documenting, interactive
+- Shareable on github, but only for static rendering of output cells (there exist systems for rendering interactive outputs, but they have limitations)
+- **Cons**: Requires a running backend, Limited ability to share interactive visualizations, Cluttered by code, etc.
 
 ---
 
-## Binder: Goals
+## Binder: Making notebooks shareable
 
 ![bg right:40% 100%](https://user-images.githubusercontent.com/3679296/275518924-00572b53-d099-457d-90ec-d8fb1c1a4eac.png)
 
@@ -109,39 +110,53 @@ These are powerful tools, but they don't offer frictionless sharing of interacti
 
 ## Binder: How it works
 
-- **GitHub Repositories**: Starts with code/notebooks in a GitHub repo.
-- **Dependencies**: Uses requirements.txt or environment.yml for environment setup.
-- **Docker Image**: Binder converts the repo into a Docker container image.
-- **Launch Instance**: When accessed, Binder starts an instance of that image.
-- **Interactive Sessions**: Users can interact with notebooks, apps, or visualizations.
-- **Ephemeral**:: All changes made during a session are ephemeral; they're lost when session ends.
+- **Git Repository**: Start with code/notebooks in a git repo (e.g., GitHub)
+- **Dependencies**: (requirements.txt or environment.yml)
+- **Docker Image**: Converts repo into Docker image
+- **Launch Instance**: Starts instance of that image
+- **Interactive Sessions**: Jupyer notebooks
+- **Ephemeral**:: Changes during session are ephemeral; lost when session ends.
 
 ---
 
 ## Binder: Limitations
 
-- Requires a running backend.
-    - Depending on number of users/views, this can be expensive.
-    - Requires maintaining a running server.
-- User needs to wait for the backend to start.
-    - Matplotlib demo: https://matplotlib.org/ (took 80 sec for me)
-    - If image is large or needs to be build, can tak several minutes
+- Requires running backend.
+    - Depending on number of users/views, can be expensive
+    - Infrastructure maintenance
+- User needs to wait for the backend to start
+    - Matplotlib demo: https://matplotlib.org/ (relatively fast example 30-90 sec)
+    - If image is large or needs to be build, can take several minutes
 
 - Binder links can break over time
     - [The first Google hit for a live binder is broken](https://elifesciences.org/labs/8653a61d/introducing-binder-2-0-share-your-interactive-research-environment) (pandas installation error)
-    - Could rely on external content or services that change over time.
+    - Could rely on external content or services that change over time
 
 ---
 
-## Observable
+## Binder: Can be very slow to load
+
+![bg right:50% 90%](https://user-images.githubusercontent.com/3679296/276528807-9a64e584-844a-4ccc-ac41-401ce6563af1.png)
+
+Here's a powerful example but very slow to load because image needs to be built at startup. (From my experience these often ultimately fail to load.)
+
+<br />
+
+https://pythoninchemistry.org/sim_and_scat/classical_methods/van_der_waals
+
+---
+
+## Observable: observablehq.com
 
 ![bg right:50% 85%](https://user-images.githubusercontent.com/3679296/275536901-be42678b-2acc-4ea7-8232-1c9d5db20d45.png)
 
-- **Interactive Exploration**: Allows users to play with data and code.
-- **Collaboration**: Share and work with others in real-time.
-- **Reactivity**: Changes propagate automatically.
-- **Reproducibility**: Ensure results can be reproduced by others.
-- **Sharing and Publishing**: Disseminate findings easily.
+- **Interactive Exploration**: Users play with data and code
+- **Collaboration**: Work with others in real-time
+- **Reactivity**: Changes propagate automatically
+- **Reproducibility**: Ensures results can be reproduced by others
+- **Sharing and Publishing**: Disseminate findings easily
+
+Example: https://observablehq.com/@redblobgames/centroid-and-voronoi-polygons
 
 ---
 
@@ -149,7 +164,7 @@ These are powerful tools, but they don't offer frictionless sharing of interacti
 
 ![bg right:50% 90%](https://user-images.githubusercontent.com/3679296/275540199-b8981686-c66a-4fce-a5db-e3c5d5469ee3.png)
 
-- Uses modified JavaScript (this is the main limitation)
+- Uses modified JavaScript (main limitation)
 - Performance issues for large datasets
 - Visualizations must be embedded in notebooks
 
@@ -180,7 +195,7 @@ These are powerful tools, but they don't offer frictionless sharing of interacti
 ![bg right:50% 90%](https://user-images.githubusercontent.com/3679296/275907049-47a1fb7b-acad-49c7-a084-1aab86473c7d.png)
 
 - This is a specialized tool
-- Requires data be prepared and uploaded to a cloud bucket (mechanism not provided)
+- Requires data be prepared and uploaded to a cloud bucket (requires expertise and special configuration)
 
 
 ---
@@ -190,13 +205,13 @@ These are powerful tools, but they don't offer frictionless sharing of interacti
 ![bg right:25% 80%](https://user-images.githubusercontent.com/3679296/269425776-52d0eec8-35b4-40be-b5f1-44937265ba77.png)
 
 - Simplifies sharing of interactive figures
-    - Run a Python script to generate a shareable URL
-    - Uses clickable hyperlink method of sharing
-    - No backend server required
+    - Run Python script to generate shareable URL
+    - Clickable hyperlink method
+    - No backend server
     - Fast loading, not embedded in notebook
 - Create custom visualization plugins
     - Static HTML bundles in the cloud
-    - React/typescript
+    - React/typescript (or other frameworks)
 - Promotes scientific collaboration, communication, reproducibility
 
 ---
@@ -221,6 +236,21 @@ print(url)
 ```
 
 https://figurl.org/f?v=gs://figurl/plotly-1&d=sha1://5c6ec276ce9a3b20b208aaff911b037ce4052e51&label=plotly%20example%20-%20iris%203d
+
+---
+
+## Figurl: Embedding in presentations / websites
+
+<table><tbody><tr>
+<td>
+<iframe src="https://figurl.org/f?v=gs://figurl/plotly-1&d=sha1://5c6ec276ce9a3b20b208aaff911b037ce4052e51&label=plotly%20example%20-%20iris%203d&hide=1
+" width="500px" height="400px"></iframe>
+</td>
+<td>
+<iframe src="https://figurl.org/f?v=gs://figurl/figneuro-1&d=sha1://e0b6c94ca7e6d0ef761e94f3551c00eb8ed23636&label=Spike%20amplitudes%20example&hide=1
+" width="500px" height="400px"></iframe>
+</td>
+</tr></tbody></table>
 
 ---
 
@@ -295,7 +325,7 @@ https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://e6ca2d115aa3b92b
 ```python
 import figurl as fig
 
-# This example is from: https://altair-viz.github.io/gallery/simple_histogram.html
+# From: https://altair-viz.github.io/gallery/simple_histogram.html
 import altair as alt
 from vega_datasets import data
 
@@ -333,7 +363,19 @@ F = W.create_figure()
 url = F.url(label='rbc_surface_scalar_fields')
 print(url)
 ```
-https://figurl.org/f?v=gs://figurl/volumeview-3&d=sha1://5a9cc08b0d8ce7a71c132b41bb5f88b9247568ba&label=rbc_surface_scalar_fields
+https://figurl.org/f?v=gs://figurl/volumeview-4&d=sha1://5a9cc08b0d8ce7a71c132b41bb5f88b9247568ba&label=rbc_surface_scalar_fields
+
+---
+
+## Embedded 3D surface
+
+<iframe src="https://figurl.org/f?v=gs://figurl/volumeview-4&d=sha1://5a9cc08b0d8ce7a71c132b41bb5f88b9247568ba&label=rbc_surface_scalar_fields&hide=1" width="1100px" height="500px"></iframe>
+
+---
+
+## Anatomy of a Figurl URL
+
+<img src="https://user-images.githubusercontent.com/3679296/276540186-a06a7043-1130-4f84-bdea-3b4bfcfb28be.png" />
 
 ---
 
@@ -356,11 +398,27 @@ https://figurl.org/f?v=gs://figurl/volumeview-3&d=sha1://5a9cc08b0d8ce7a71c132b4
 
 ---
 
+## Lab-specific visualization plugins
+
+<center>
+<img src="https://user-images.githubusercontent.com/3679296/276545564-84b529e7-5125-4169-8612-a662b63bbfb1.png" width="1000px" />
+</center>
+
+---
+
+## Lab-specific visualization plugins
+
+<center>
+<img src="https://user-images.githubusercontent.com/3679296/276546096-1ccda771-0a5e-47c3-93bd-df29dc86744f.png" width="1000px" />
+</center>
+
+---
+
 ## Figurl uses Kachery
 
 ![bg right:50% 100%](https://user-images.githubusercontent.com/3679296/271279738-995996c6-a545-4cf7-9f5d-5473ca302547.png)
 
-Kachery is a Content Addressable Storage database in the cloud
+Content Addressable Storage (CAS) database in the cloud
 - Minimal configuration for upload
 - Download from anywhere
 - Python client or Command-line client
@@ -405,7 +463,7 @@ z = kcl.load_pkl("sha1://20d178d5a1264fc3267e38ca238c23f3e2dcd5d2?label=example.
 
 ---
 
-## Embedding Figurl Figures in Markdown Documents
+## Advanced: Embedding Figurl Figures in Markdown Documents
 
 ![bg right:50% 80%](https://user-images.githubusercontent.com/3679296/275901510-d12adf57-82f6-4631-b0f3-aad81506b996.png)
 
@@ -419,19 +477,19 @@ https://doc.figurl.org/gh/dcmnts/isosplit-paper/blob/main/isosplit.md
 
 ## Summary
 
-- There are many powerful tools for creating interactive visualizations, but most are not easily shared
+- Many powerful visualization tools exist, but frictionless sharing is still a challenge
 - Figurl is an open-source browser-based visualization tool
-    - Uses the clickable hyperlink method of sharing
-    - Uses Kachery for storing and retrieving data
-    - Promotes scientific collaboration, communication, reproducibility
+    - Uses the clickable hyperlink method
+    - Reduces friction for sharing interactive visualizations
+    - Promotes scientific collaboration
 
 ---
 
 ## Future directions
 
-- Develop more visualization plugins / collaborations
-- Improved documentation for plugin developers
-- Improved management of kachery data (e.g., delete old data)
+- Develop additional visualization plugins
+- Expand collaborations
+- Improve kachery data management (e.g., mechanism to delete old data)
 
 ---
 
