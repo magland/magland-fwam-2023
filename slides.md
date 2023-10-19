@@ -2,7 +2,7 @@
 marp: true
 paginate: true
 theme: magland-theme
-footer: Magland FWAM 2023
+footer: Figurl FWAM 2023
 ---
 
 <!-- For using custom theme, see https://github.com/orgs/marp-team/discussions/115 -->
@@ -14,7 +14,7 @@ Jeremy Magland, Center for Computational Mathematics, Flatiron Institute
 ### With
 
 - Flatiron: Jeff Soules
-- Frank lab: Loren Frank, Eric denovellis, Kyu Hyun Lee, Alison Comrie, Michael Coulter
+- Frank lab: Loren Frank, Eric Denovellis, Kyu Hyun Lee, Alison Comrie, Michael Coulter
 - Allen Institute: Alessio Buccino
 
 ---
@@ -69,7 +69,7 @@ Interactive visualizations are not easily shared as they often require:
 - Easy to use
 - Easy to share
 - Cross-platform
-- Development cycle advantages:** simplifies distribution, etc.
+- Development cycle advantages (simplifies distribution, etc.)
 - Integrates naturally with cloud resources
 - Collaboration
 - Reproducibility
@@ -79,7 +79,7 @@ Interactive visualizations are not easily shared as they often require:
 
 ## Existing browser-based visualization tools
 
-[Observable](https://observablehq.com), [Vega](https://vega.github.io/vega/), [Plotly](https://plotly.com/), [Bokeh](https://bokeh.org/), [D3](https://d3js.org/), [Matplotlib](https://matplotlib.org/stable/index.html), [Google Charts](https://developers.google.com/chart), [VisPy](https://vispy.org/), [Altair](https://altair-viz.github.io/), [Deck.gl](https://deck.gl/), [Polymetric](https://polymetric.dev/), [P5.js](https://p5js.org/), [Three.js](https://threejs.org/), [Processing.js](http://processingjs.org/), [Babylon.js](https://www.babylonjs.com/), [Phaser](https://phaser.io/), [A-Frame](https://aframe.io/), [P5.js](https://p5js.org/), [Pixi.js](https://www.pixijs.com/), [Recharts](https://recharts.org/en-US/), [NVD3](http://nvd3.org/), [C3.js](https://c3js.org/), [D3.js](https://d3js.org/), [D3plus](https://d3plus.org/), [Chart.js](https://www.chartjs.org/), [Vega-Lite](https://vega.github.io/vega-lite/), [Vega](https://vega.github.io/vega/), [ECharts](https://echarts.apache.org/en/index.html), [Highcharts](https://www.highcharts.com/), [Leaflet](https://leafletjs.com/)
+[Observable](https://observablehq.com), [Vega](https://vega.github.io/vega/), [Plotly](https://plotly.com/), [Bokeh](https://bokeh.org/), [D3](https://d3js.org/), [Matplotlib](https://matplotlib.org/stable/index.html), [Google Charts](https://developers.google.com/chart), [VisPy](https://vispy.org/), [Altair](https://altair-viz.github.io/), [Deck.gl](https://deck.gl/), [P5.js](https://p5js.org/), [Three.js](https://threejs.org/), [Babylon.js](https://www.babylonjs.com/), [A-Frame](https://aframe.io/), [Pixi.js](https://www.pixijs.com/), [Recharts](https://recharts.org/en-US/), [NVD3](http://nvd3.org/), [C3.js](https://c3js.org/), [Chart.js](https://www.chartjs.org/), [Vega-Lite](https://vega.github.io/vega-lite/), [ECharts](https://echarts.apache.org/en/index.html), [Highcharts](https://www.highcharts.com/), [Leaflet](https://leafletjs.com/)
 
 ###  ... and many more
 
@@ -115,7 +115,7 @@ These are powerful tools, but they typically need to be embedded in a framework 
 - **Docker Image**: Converts repo into Docker image
 - **Launch Instance**: Starts instance of that image
 - **Interactive Sessions**: Jupyer notebooks
-- **Ephemeral**:: Changes during session are ephemeral; lost when session ends.
+- **Ephemeral**: Changes during session are ephemeral; lost when session ends.
 
 ---
 
@@ -126,7 +126,7 @@ These are powerful tools, but they typically need to be embedded in a framework 
     - Infrastructure maintenance
 - User needs to wait for the backend to start
     - Matplotlib demo: https://matplotlib.org/ (relatively fast example 30-90 sec)
-    - If image is large or needs to be build, can take several minutes
+    - If image is large or needs to be built, can take several minutes
 
 - Binder links can break over time
     - [The first Google hit for a live binder is broken](https://elifesciences.org/labs/8653a61d/introducing-binder-2-0-share-your-interactive-research-environment) (pandas installation error)
