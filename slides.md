@@ -513,8 +513,8 @@ https://doc.figurl.org/gh/dcmnts/isosplit-paper/blob/main/isosplit.md
 ## Future directions
 
 - Develop additional visualization plugins
-- Expand collaborations
-- Improve kachery data management (e.g., mechanism to delete old data)
+- Expand collaborations and attract developers
+- Improve kachery infrastructure
 
 ---
 
