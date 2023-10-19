@@ -19,10 +19,6 @@ Jeremy Magland, Center for Computational Mathematics, Flatiron Institute
 
 ---
 
-Include slides on observable and alternatives
-
----
-
 ## Role of visualization in the scientific process
 
 ![bg right:20% 40%](https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg)
@@ -137,7 +133,7 @@ These are powerful tools, but they don't offer frictionless sharing of interacti
 
 ---
 
-## Observable: Goals
+## Observable
 
 ![bg right:50% 85%](https://user-images.githubusercontent.com/3679296/275536901-be42678b-2acc-4ea7-8232-1c9d5db20d45.png)
 
@@ -163,7 +159,7 @@ These are powerful tools, but they don't offer frictionless sharing of interacti
 
 ![bg right:50% 90%](https://i0.wp.com/blog.eyewire.org/wp-content/uploads/2017/10/example_bundle_pyramidal.png?w=666&ssl=1)
 
-- Example: [Neuroglancer](https://github.com/google/neuroglancer)
+- Example: [Neuroglancer](https://github.com/google/neuroglancer) (from Google)
 - Dissemination using URLs
 - No backend server required (client-side computation)
 - [Open viewer](https://neuroglancer-demo.appspot.com/#!{'layers':{'image':{'type':'image'_'source':'precomputed://gs://neuroglancer-public-data/flyem_fib-25/image'}_'ground-truth':{'type':'segmentation'_'source':'precomputed://gs://neuroglancer-public-data/flyem_fib-25/ground_truth'_'segments':['21894'_'22060'_'158571'_'24436'_'2515']}}_'navigation':{'pose':{'position':{'voxelSize':[8_8_8]_'voxelCoordinates':[2914.500732421875_3088.243408203125_4045]}}_'zoomFactor':30.09748283999932}_'perspectiveOrientation':[0.3143535554409027_0.8142156600952148_0.4843369424343109_-0.06040262430906296]_'perspectiveZoom':443.63404517712684_'showSlices':false})
@@ -181,7 +177,10 @@ These are powerful tools, but they don't offer frictionless sharing of interacti
 
 ## Neuroglancer: Limitations
 
-- This is a very specialized tool
+![bg right:50% 90%](https://user-images.githubusercontent.com/3679296/275907049-47a1fb7b-acad-49c7-a084-1aab86473c7d.png)
+
+- This is a specialized tool
+- Requires data be prepared and uploaded to a cloud bucket (mechanism not provided)
 
 
 ---
@@ -219,14 +218,9 @@ ff = px.scatter_3d(iris, x='sepal_length',
 # Create and print the figURL
 url = fig.Plotly(ff).url(label='plotly example - iris 3d')
 print(url)
-
-# Output: 
-# https://figurl.org/f?v=gs://figurl/plotly-1
-# &d=sha1://5c6ec276ce9a3b20b208aaff911b037ce4052e51
-# &label=plotly%20example%20-%20iris%203d
 ```
 
-[Figurl link](https://figurl.org/f?v=gs://figurl/plotly-1&d=sha1://5c6ec276ce9a3b20b208aaff911b037ce4052e51&label=plotly%20example%20-%20iris%203d)
+https://figurl.org/f?v=gs://figurl/plotly-1&d=sha1://5c6ec276ce9a3b20b208aaff911b037ce4052e51&label=plotly%20example%20-%20iris%203d
 
 ---
 
@@ -234,9 +228,16 @@ print(url)
 
 ![bg: 80%](https://user-images.githubusercontent.com/3679296/269635248-6f9ee2b9-3217-4a8b-8338-a7535851a8a3.svg)
 
+
 ---
 
-## Figurl / SpikeInterface integration
+## Figurl Neurophysiology Example ([figurl](https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://8d61e59b2806cf927ca1bd265923c23f5c37b990&label=experiment1_Record%20Node%20104%23Neuropix-PXI-100.ProbeA-AP_recording1%20-%20kilosort2_5%20-%20Sorting%20Summary))
+
+<img src="https://user-images.githubusercontent.com/3679296/271270920-8f10b747-bac7-4664-b8fd-bb6cd5867d18.svg" height="95%" width="95%" />
+
+---
+
+## Figurl Neurophysiology Example
 
 ```python
 import spikeextractors as se
@@ -252,28 +253,104 @@ url = widget.url(label='example')
 print(url)
 ```
 
----
-
-## Figurl / SpikeInterface integration ([figurl](https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://8d61e59b2806cf927ca1bd265923c23f5c37b990&label=experiment1_Record%20Node%20104%23Neuropix-PXI-100.ProbeA-AP_recording1%20-%20kilosort2_5%20-%20Sorting%20Summary))
-
-<img src="https://user-images.githubusercontent.com/3679296/271270920-8f10b747-bac7-4664-b8fd-bb6cd5867d18.svg" height="95%" width="95%" />
+https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://8d61e59b2806cf927ca1bd265923c23f5c37b990&label=experiment1_Record%20Node%20104%23Neuropix-PXI-100.ProbeA-AP_recording1%20-%20kilosort2_5%20-%20Sorting%20Summary
 
 ---
 
-## Figurl: Other examples - [gallery](https://magland.github.io/figurl-gallery-viewer/)
+## Figurl Timeseries Graph Example
+
+```python
+import numpy as np
+import sortingview.views as vv
+
+G = vv.TimeseriesGraph(
+    legend_opts={'location': 'northwest'},
+    y_range=[-15, 15],
+    hide_x_gridlines=False,
+    hide_y_gridlines=True
+)
+n1 = 5000
+t = np.arange(0, n1) / n1 * 10
+v = t * np.cos((2 * t)**2)
+G.add_line_series(name='blue line', t=t, y=v.astype(np.float32), color='blue')
+n2 = 400
+t = np.arange(0, n2) / n2 * 10
+v = t * np.cos((2 * t)**2)
+G.add_marker_series(name='red marker', t=t, y=v.astype(np.float32), color='red', radius=4)
+v = t + 1
+G.add_line_series(name='green dash', t=t, y=v.astype(np.float32), color='green', width=5, dash=[12, 8])
+t = np.arange(0, 12) / 12 * 10
+v = -t - 1
+G.add_marker_series(name='black marker', t=t, y=v.astype(np.float32), color='black', radius=8, shape='square')
+
+print(G.url(label='TimeseriesGraph-Example'))
+```
+
+https://figurl.org/f?v=gs://figurl/spikesortingview-10&d=sha1://e6ca2d115aa3b92b6da77643f07349cb8f9b5546&label=TimeseriesGraph-Example
+
+---
+
+## Figurl Altair Example
+
+```python
+import figurl as fig
+
+# This example is from: https://altair-viz.github.io/gallery/simple_histogram.html
+import altair as alt
+from vega_datasets import data
+
+source = data.movies.url
+
+chart = alt.Chart(source).mark_bar().encode(
+    alt.X("IMDB_Rating:Q", bin=True),
+    y='count()',
+)
+
+# Create and print the figURL
+url = fig.Altair(chart).url(label='example altair chart')
+print(url)
+```
+
+https://figurl.org/f?v=gs://figurl/vegalite-2&d=sha1://f5920cbea57e42211f7cf83065230132713a3f01&label=example%20altair%20chart
+
+---
+
+## Figurl 3D Surface Example
+
+```python
+vtk_uri = 'sha1://e54d59b5f12d226fdfe8a0de7d66a3efd1b83d69?label=rbc_001.vtk'
+vtk_path = kcl.load_file(vtk_uri)
+
+vertices, faces = vv._parse_vtk_unstructured_grid(vtk_path)
+
+W = vv.Workspace()
+S = W.add_surface(name='red-blood-cell', vertices=vertices, faces=faces)
+W.add_surface_scalar_field(name='scalarX', surface=S, data=vertices[:, 0])
+W.add_surface_scalar_field(name='scalarY', surface=S, data=vertices[:, 1])
+W.add_surface_scalar_field(name='scalarZ', surface=S, data=vertices[:, 2])
+
+F = W.create_figure()
+url = F.url(label='rbc_surface_scalar_fields')
+print(url)
+```
+https://figurl.org/f?v=gs://figurl/volumeview-3&d=sha1://5a9cc08b0d8ce7a71c132b41bb5f88b9247568ba&label=rbc_surface_scalar_fields
+
+---
+
+## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
 
 <image src="https://user-images.githubusercontent.com/3679296/271276312-886a4aec-f972-4d9c-a821-19a2ae3d0de2.png" width="95%" />
 
 
 ---
 
-## Figurl: Other examples - [gallery](https://magland.github.io/figurl-gallery-viewer/)
+## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
 
 <image src="https://user-images.githubusercontent.com/3679296/271276944-449ddb6a-d640-48b2-9ee3-655ecb82e2fd.png" width="95%" />
 
 ---
 
-## Figurl: Other examples - [gallery](https://magland.github.io/figurl-gallery-viewer/)
+## [Figurl gallery](https://magland.github.io/figurl-gallery-viewer/)
 
 <image src="https://user-images.githubusercontent.com/3679296/271277359-9622d633-c375-467c-9549-3a69ca1616d9.png" width="95%" />
 
@@ -325,3 +402,37 @@ y = kcl.load_npy("sha1://bb55205a2482c6db2ace544fc7d8397551110701?label=example.
 
 z = kcl.load_pkl("sha1://20d178d5a1264fc3267e38ca238c23f3e2dcd5d2?label=example.pkl")
 ```
+
+---
+
+## Embedding Figurl Figures in Markdown Documents
+
+![bg right:50% 80%](https://user-images.githubusercontent.com/3679296/275901510-d12adf57-82f6-4631-b0f3-aad81506b996.png)
+
+https://github.com/dcmnts/isosplit-paper/blob/main/isosplit.md
+
+yields
+
+https://doc.figurl.org/gh/dcmnts/isosplit-paper/blob/main/isosplit.md
+
+---
+
+## Summary
+
+- There are many powerful tools for creating interactive visualizations, but most are not easily shared
+- Figurl is an open-source browser-based visualization tool
+    - Uses the clickable hyperlink method of sharing
+    - Uses Kachery for storing and retrieving data
+    - Promotes scientific collaboration, communication, reproducibility
+
+---
+
+## Future directions
+
+- Develop more visualization plugins / collaborations
+- Improved documentation for plugin developers
+- Improved management of kachery data (e.g., delete old data)
+
+---
+
+## Thank you!
