@@ -100,7 +100,7 @@ These are powerful tools, but they typically need to be embedded in a framework 
 - Jupyter, Google Colab, etc.
 - **Pros**: reproducible, self-documenting, interactive
 - Shareable on github, but only for static rendering of output cells
-- There are other systems for rendering interactive outputs, but they have limitations
+- Other systems exist for rendering in static pages, but they have limitations
 - **Cons**: Requires a running backend, Cluttered by code, etc.
 
 ---
