@@ -2,20 +2,26 @@
 marp: true
 paginate: true
 theme: magland-theme
-footer: Figurl FWAM 2023
+header: <img src="https://user-images.githubusercontent.com/3679296/276917690-ed331783-4853-44ea-969f-b29d9415d21d.png" style="margin-left:15px" width="200px" />
+footer: <div>Figurl FWAM 2023</div>
 ---
 
 <!-- For using custom theme, see https://github.com/orgs/marp-team/discussions/115 -->
 
-## Collaborative scientific visualization in the browser with Figurl
+# Collaborative scientific visualization in the browser with Figurl
 
-Jeremy Magland, Center for Computational Mathematics, Flatiron Institute
+Jeremy Magland and Jeff Soules, Center for Computational Mathematics, Flatiron Institute
 
-### With
+Flatiron-Wide Autumn Meeting (FWAM), October 2023
 
-- Flatiron: Jeff Soules
-- Frank lab: Loren Frank, Eric Denovellis, Kyu Hyun Lee, Alison Comrie, Michael Coulter
-- Allen Institute: Alessio Buccino
+<br />
+<br />
+
+<center>
+<img src="https://github.com/flatironinstitute/figurl/raw/main/figurl.png" width="20%" />
+<br />
+Follow along: <a href="https://github.com/magland" target="_blank">https://github.com/magland</a>
+</center>
 
 ---
 
@@ -147,9 +153,9 @@ https://pythoninchemistry.org/sim_and_scat/classical_methods/van_der_waals
 
 ---
 
-## Observable: observablehq.com
+## Observable (observablehq.com)
 
-![bg right:50% 85%](https://user-images.githubusercontent.com/3679296/275536901-be42678b-2acc-4ea7-8232-1c9d5db20d45.png)
+![bg right:45% 85%](https://user-images.githubusercontent.com/3679296/275536901-be42678b-2acc-4ea7-8232-1c9d5db20d45.png)
 
 - **Interactive Exploration**: Users play with data and code
 - **Collaboration**: Work with others in real-time
@@ -157,7 +163,7 @@ https://pythoninchemistry.org/sim_and_scat/classical_methods/van_der_waals
 - **Reproducibility**: Ensures results can be reproduced by others
 - **Sharing and Publishing**: Disseminate findings easily
 
-Example: https://observablehq.com/@redblobgames/centroid-and-voronoi-polygons
+Example: <a href="https://observablehq.com/@redblobgames/centroid-and-voronoi-polygons" target="_blank">centroid-and-voronoi-polygons</a>
 
 ---
 
@@ -185,7 +191,8 @@ Example: https://observablehq.com/@redblobgames/centroid-and-voronoi-polygons
 
 ## Example Neuroglancer URL
 
-![bg right:25% 90%](https://github.com/magland/magland-fwam-2023/assets/3679296/02d77daf-ccf9-458f-9feb-724905769690)
+<!-- ![bg right:40% 90%](https://github.com/magland/magland-fwam-2023/assets/3679296/02d77daf-ccf9-458f-9feb-724905769690) -->
+
 
 `https://neuroglancer-demo.appspot.com/#!{'layers':{'image':{'type':'image'_'source':'precomputed://gs://neuroglancer-public-data/flyem_fib-25/image'}_'ground-truth':{'type':'segmentation'_'source':'precomputed://gs://neuroglancer-public-data/flyem_fib-25/ground_truth'_'segments':['21894'_'22060'_'158571'_'24436'_'2515']}}_'navigation':{'pose':{'position':{'voxelSize':[8_8_8]_'voxelCoordinates':[2914.500732421875_3088.243408203125_4045]}}_'zoomFactor':30.09748283999932}_'perspectiveOrientation':[0.3143535554409027_0.8142156600952148_0.4843369424343109_-0.06040262430906296]_'perspectiveZoom':443.63404517712684_'showSlices':false}`
 
@@ -203,7 +210,7 @@ Example: https://observablehq.com/@redblobgames/centroid-and-voronoi-polygons
 
 ## Figurl: overview
 
-![bg right:25% 80%](https://user-images.githubusercontent.com/3679296/269425776-52d0eec8-35b4-40be-b5f1-44937265ba77.png)
+![bg right:35% 80%](https://user-images.githubusercontent.com/3679296/269425776-52d0eec8-35b4-40be-b5f1-44937265ba77.png)
 
 - Simplifies sharing of interactive figures
     - Run Python script to generate shareable URL
@@ -257,7 +264,7 @@ https://figurl.org/f?v=gs://figurl/plotly-1&d=sha1://5c6ec276ce9a3b20b208aaff911
 
 ## Figurl architecture
 
-![bg: 80%](https://user-images.githubusercontent.com/3679296/269635248-6f9ee2b9-3217-4a8b-8338-a7535851a8a3.svg)
+<img src="https://user-images.githubusercontent.com/3679296/269635248-6f9ee2b9-3217-4a8b-8338-a7535851a8a3.svg" />
 
 
 ---
@@ -296,22 +303,17 @@ import sortingview.views as vv
 
 G = vv.TimeseriesGraph(
     legend_opts={'location': 'northwest'},
-    y_range=[-15, 15],
-    hide_x_gridlines=False,
-    hide_y_gridlines=True
+    y_range=[-15, 15], hide_x_gridlines=False, hide_y_gridlines=True
 )
 n1 = 5000
-t = np.arange(0, n1) / n1 * 10
-v = t * np.cos((2 * t)**2)
+t = np.arange(0, n1) / n1 * 10; v = t * np.cos((2 * t)**2)
 G.add_line_series(name='blue line', t=t, y=v.astype(np.float32), color='blue')
 n2 = 400
-t = np.arange(0, n2) / n2 * 10
-v = t * np.cos((2 * t)**2)
+t = np.arange(0, n2) / n2 * 10; v = t * np.cos((2 * t)**2)
 G.add_marker_series(name='red marker', t=t, y=v.astype(np.float32), color='red', radius=4)
 v = t + 1
 G.add_line_series(name='green dash', t=t, y=v.astype(np.float32), color='green', width=5, dash=[12, 8])
-t = np.arange(0, 12) / 12 * 10
-v = -t - 1
+t = np.arange(0, 12) / 12 * 10; v = -t - 1
 G.add_marker_series(name='black marker', t=t, y=v.astype(np.float32), color='black', radius=8, shape='square')
 
 print(G.url(label='TimeseriesGraph-Example'))
@@ -338,10 +340,7 @@ from vega_datasets import data
 
 source = data.movies.url
 
-chart = alt.Chart(source).mark_bar().encode(
-    alt.X("IMDB_Rating:Q", bin=True),
-    y='count()',
-)
+chart = alt.Chart(source).mark_bar().encode(alt.X("IMDB_Rating:Q", bin=True), y='count()')
 
 # Create and print the figURL
 url = fig.Altair(chart).url(label='example altair chart')
@@ -451,7 +450,7 @@ z = kcl.load_pkl("sha1://20d178d5a1264fc3267e38ca238c23f3e2dcd5d2?label=example.
 ## Lab-specific visualization plugins (Loren Frank Lab)
 
 <center>
-<img src="https://user-images.githubusercontent.com/3679296/276545564-84b529e7-5125-4169-8612-a662b63bbfb1.png" width="1000px" />
+<img src="https://user-images.githubusercontent.com/3679296/276545564-84b529e7-5125-4169-8612-a662b63bbfb1.png" width="850px" />
 </center>
 
 ---
@@ -459,7 +458,7 @@ z = kcl.load_pkl("sha1://20d178d5a1264fc3267e38ca238c23f3e2dcd5d2?label=example.
 ## Lab-specific visualization plugins (with Ralph Peterson)
 
 <center>
-<img src="https://user-images.githubusercontent.com/3679296/276546096-1ccda771-0a5e-47c3-93bd-df29dc86744f.png" width="1000px" />
+<img src="https://user-images.githubusercontent.com/3679296/276546096-1ccda771-0a5e-47c3-93bd-df29dc86744f.png" width="850px" />
 </center>
 
 ---
@@ -519,3 +518,12 @@ https://doc.figurl.org/gh/dcmnts/isosplit-paper/blob/main/isosplit.md
 ---
 
 ## Thank you!
+
+- Flatiron: Jeff Soules
+- Frank lab: Loren Frank, Eric Denovellis, Kyu Hyun Lee, Alison Comrie, Michael Coulter
+- Allen Institute: Alessio Buccino
+
+<br />
+
+https://github.com/flatironinstitute/figurl
+https://github.com/flatironinstitute/kachery-cloud
